@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <link href="css/accessibility.css" rel="stylesheet">
+
+</head>
+<body>
+      <!-- 🌊 Fondo animado -->
+  <div class="background-scene">
+    <div class="betta-fish betta1"></div>
+    <div class="betta-fish betta2"></div>
+    <div class="bubble-container">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+    <div class="water-waves"></div>
+  </div>
+
+  <!-- 💜 NAVBAR -->
+ <nav class="navbar navbar-expand-lg navbar-light aura-nav fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <div class="logo-container"><i class="bi bi-tsunami"></i></div>
+        <span class="brand-text ms-2 fw-semibold">AuraPost</span>
+      </a>
+       <div class="search-container d-none d-lg-flex align-items-center">
+  <div class="search-bar position-relative">
+    <i class="bi bi-search search-icon"></i>
+    <input 
+      class="form-control search-input" 
+      type="search" 
+      placeholder="Buscar auras..." 
+      aria-label="Buscar">
+  </div>
+</div>
+
+
+      <div class="d-flex align-items-center gap-3">
+      
+        <!-- Iconos -->
+        <a href="index.php" class="nav-icon active" data-tooltip="Inicio"><i class="bi bi-house-door-fill"></i></a>
+        <a href="discover.html" class="nav-icon" data-tooltip="Descubrir"><i class="bi bi-compass"></i></a>
+        <a href="notifications.html" class="nav-icon" data-tooltip="Notificaciones">
+          <i class="bi bi-bell"></i>
+          <span class="notification-badge">3</span>
+        </a>
+        <a href="daily.php" class="nav-icon" data-tooltip="Reto Diario"><i class="bi bi-sun"></i></a>
+        <a href="profile.php" class="nav-icon" data-tooltip="Perfil">
+          <div class="avatar-mini">
+            <img src="assets/profile.png" alt="Tu perfil">
+          </div>
+        </a>
+        <a href="configuracion.html" class="nav-icon" data-tooltip="Configuración">
+          <i class="bi bi-gear-fill"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+    <main class="container-fluid main-container my-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <!-- Perfil Usuario -->
+      <div class="profile-page glass-card p-4 mb-4">
+        <div class="d-flex align-items-center mb-3">
+          <img src="assets/profile2.png" class="profile-avatar-lg me-3" alt="Avatar">
+          <div>
+            <h3 class="profile-name">Alex Creator</h3>
+            <p class="profile-handle">@alexcreator</p>
+          </div>
+        </div>
+
+        <div class="stats-row mb-3">
+          <div class="stat-item">
+            <span class="stat-number">452</span>
+            <span class="stat-label">Seguidores</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">98</span>
+            <span class="stat-label">Siguiendo</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">124</span>
+            <span class="stat-label">Posts</span>
+          </div>
+        </div>
+
+        <div class="action-buttons mb-4">
+          <button class="btn btn-primary-gradient me-2">
+            <i class="bi bi-person-plus me-2"></i>Seguir
+          </button>
+          <button class="btn btn-outline-light">
+            <i class="bi bi-chat-dots me-2"></i>Mensaje
+          </button>
+        </div>
+
+        <div class="user-posts">
+          <!-- Posts del usuario -->
+          <h5 class="mb-3">Publicaciones</h5>
+
+          <div class="post-item mb-3">
+            <article class="post-card emotion-inspired-post">
+              <div class="post-header d-flex align-items-center">
+                <img src="assets/profile2.png" class="post-avatar" alt="Alex Creator">
+                <div class="post-info ms-3">
+                  <h6 class="post-author mb-1">Alex Creator 🎨</h6>
+                  <span class="post-time">Hace 3 horas</span>
+                </div>
+              </div>
+              <div class="post-content mt-2">
+                <p>"Hoy trabajé en un nuevo proyecto artístico, me siento inspirado y motivado ✨"</p>
+              </div>
+              <div class="post-footer mt-2">
+                <button class="post-action like"><i class="far fa-heart"></i> 34</button>
+                <button class="post-action"><i class="bi bi-chat"></i> 6</button>
+                <button class="post-action"><i class="bi bi-share"></i> 2</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="post-item mb-3">
+            <article class="post-card emotion-happy-post">
+              <div class="post-header d-flex align-items-center">
+                <img src="assets/profile2.png" class="post-avatar" alt="Alex Creator">
+                <div class="post-info ms-3">
+                  <h6 class="post-author mb-1">Alex Creator 🎨</h6>
+                  <span class="post-time">Hace 1 día</span>
+                </div>
+              </div>
+              <div class="post-content mt-2">
+                <p>"¡Hoy el día estuvo increíble! Logré terminar mi ilustración favorita 😄"</p>
+              </div>
+              <div class="post-footer mt-2">
+                <button class="post-action like active"><i class="fas fa-heart"></i> 56</button>
+                <button class="post-action"><i class="bi bi-chat"></i> 12</button>
+                <button class="post-action"><i class="bi bi-share"></i> 4</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/accessibility.js"></script>  <!-- NUEVO SCRIPT -->
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+// ============================================
+// ACCESSIBILITY.SCSS - Modo de Alto Contraste
+//accessibility.scss ============================================
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// ============================================
+// VARIABLES DE ACCESIBILIDAD
+// ============================================
+
+// Colores del modo alto contraste
+$hc-bg: #000;
+$hc-text: #fff;
+$hc-primary: #00ffcc;
+$hc-secondary: #ffff00;
+$hc-border: #00ffcc;
+$hc-muted: #bbb;
+
+// Espaciado y tamaños
+$hc-font-scale: 110%;
+$hc-border-width: 3px;
+$hc-border-width-thin: 2px;
+$hc-focus-width: 3px;
+
+// ============================================
+// MIXINS PARA ACCESIBILIDAD
+// ============================================
+
+@mixin high-contrast-card {
+  background: #111 !important;
+  backdrop-filter: none !important;
+  border: $hc-border-width solid $hc-border !important;
+  box-shadow: 0 0 10px $hc-border !important;
+}
+
+@mixin high-contrast-button-primary {
+  background: $hc-primary !important;
+  color: $hc-bg !important;
+  font-weight: bold !important;
+  border: $hc-border-width-thin solid $hc-primary !important;
+  
+  &:hover {
+    background: darken($hc-primary, 10%) !important;
+    color: $hc-bg !important;
+  }
+}
+
+@mixin high-contrast-button-outline {
+  background: transparent !important;
+  color: $hc-secondary !important;
+  border: $hc-border-width-thin solid $hc-secondary !important;
+  font-weight: bold !important;
+  
+  &:hover {
+    background: $hc-secondary !important;
+    color: $hc-bg !important;
+  }
+}
+
+@mixin high-contrast-input {
+  background: #111 !important;
+  color: $hc-text !important;
+  border: $hc-border-width-thin solid $hc-secondary !important;
+  font-size: 1.1em !important;
+  
+  &:focus {
+    border-color: $hc-primary !important;
+    box-shadow: 0 0 10px $hc-primary !important;
+  }
+  
+  &::placeholder {
+    color: $hc-muted !important;
+    opacity: 1 !important;
+  }
+}
+
+@mixin remove-animations {
+  animation-duration: 0.01s !important;
+  transition-duration: 0.1s !important;
+}
+
+// ============================================
+// ESTILOS BASE DEL MODO ALTO CONTRASTE
+// ============================================
+
+body {
+  transition: all 0.3s ease;
+}
+
+body.high-contrast {
+  // Fondo y colores base
+  background: $hc-bg !important;
+  color: $hc-text !important;
+  animation: none !important;
+  font-size: $hc-font-scale !important;
+
+  // Eliminar efectos visuales
+  * {
+    backdrop-filter: none !important;
+    text-shadow: none !important;
+    @include remove-animations;
+  }
+
+  // Eliminar fondo animado
+  .background-scene {
+    display: none !important;
+  }
+
+  // ============================================
+  // COMPONENTES PRINCIPALES
+  // ============================================
+
+  // Tarjetas y contenedores
+  .glass-card,
+  .post-card,
+  .profile-card,
+  .streak-card,
+  .challenge-card,
+  .trending-card,
+  .suggestions-card,
+  .emotion-stats,
+  .achievements-card,
+  .profile-tabs,
+  .notification-card,
+  .friend-card,
+  .profile-main-card,
+  .create-post-container,
+  .create-post {
+    @include high-contrast-card;
+  }
+
+  // Navbar
+  .aura-nav,
+  .navbar {
+    background: $hc-bg !important;
+    border-bottom: $hc-border-width solid $hc-border !important;
+    backdrop-filter: none !important;
+  }
+
+  .bottom-bar {
+    background: $hc-bg !important;
+    border-top: $hc-border-width solid $hc-border !important;
+  }
+
+  // ============================================
+  // BOTONES
+  // ============================================
+
+  // Botones primarios
+  .btn-primary-gradient,
+  .btn-primary,
+  .btn-challenge,
+  .publish-btn,
+  .btn-aura {
+    @include high-contrast-button-primary;
+  }
+
+  // Botones outline
+  .btn-outline-primary,
+  .btn-outline-light,
+  .btn-follow {
+    @include high-contrast-button-outline;
+  }
+
+  // Botones secundarios
+  .btn-outline-secondary {
+    background: transparent !important;
+    color: $hc-primary !important;
+    border: $hc-border-width-thin solid $hc-primary !important;
+    
+    &:hover {
+      background: $hc-primary !important;
+      color: $hc-bg !important;
+    }
+  }
+
+  // ============================================
+  // NAVEGACIÓN Y ENLACES
+  // ============================================
+
+  a,
+  .nav-icon,
+  .nav-link {
+    color: $hc-secondary !important;
+    font-weight: bold !important;
+
+    &:hover {
+      color: $hc-primary !important;
+      background: rgba($hc-primary, 0.2) !important;
+    }
+  }
+
+  .nav-icon.active,
+  .nav-link.active {
+    background: $hc-primary !important;
+    color: $hc-bg !important;
+  }
+
+  // ============================================
+  // FORMULARIOS E INPUTS
+  // ============================================
+
+  input,
+  textarea,
+  .form-control,
+  .search-bar,
+  .create-input,
+  select,
+  .form-select {
+    @include high-contrast-input;
+  }
+
+  // ============================================
+  // TIPOGRAFÍA
+  // ============================================
+
+  // Encabezados
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  .profile-name,
+  .post-author,
+  strong,
+  .fw-bold {
+    color: $hc-text !important;
+    font-weight: bold !important;
+  }
+
+  // Texto normal
+  p,
+  .post-content,
+  .challenge-description,
+  .profile-bio,
+  .text-body {
+    color: $hc-text !important;
+    font-size: 1.1em !important;
+    line-height: 1.6 !important;
+  }
+
+  // Texto secundario
+  .text-muted,
+  .post-time,
+  .profile-handle,
+  .text-secondary,
+  small,
+  .small {
+    color: $hc-muted !important;
+    font-weight: 600 !important;
+  }
+
+  // Gradientes de texto
+  .brand-text,
+  .text-gradient,
+  .text-primary {
+    background: none !important;
+    color: $hc-primary !important;
+    -webkit-text-fill-color: $hc-primary !important;
+  }
+
+  // ============================================
+  // BADGES Y ETIQUETAS
+  // ============================================
+
+  .emotion-indicator,
+  .emotion-badge,
+  .badge,
+  .notification-badge {
+    background: $hc-secondary !important;
+    color: $hc-bg !important;
+    border: $hc-border-width-thin solid $hc-secondary !important;
+    font-weight: bold !important;
+  }
+
+  // ============================================
+  // POSTS Y ACCIONES
+  // ============================================
+
+  .post-action {
+    background: #111 !important;
+    border: $hc-border-width-thin solid $hc-secondary !important;
+    color: $hc-secondary !important;
+
+    &:hover {
+      background: $hc-secondary !important;
+      color: $hc-bg !important;
+    }
+
+    &.active {
+      background: $hc-primary !important;
+      color: $hc-bg !important;
+      border-color: $hc-primary !important;
+    }
+  }
+
+  // ============================================
+  // AVATARES E IMÁGENES
+  // ============================================
+
+  .avatar-mini,
+  .profile-avatar,
+  .post-avatar,
+  .create-avatar,
+  .friend-avatar,
+  .suggestion-avatar {
+    border: $hc-border-width solid $hc-primary !important;
+    box-shadow: 0 0 10px $hc-primary !important;
+  }
+
+  // ============================================
+  // BARRAS DE PROGRESO
+  // ============================================
+
+  .progress {
+    background: #111 !important;
+    border: $hc-border-width-thin solid $hc-secondary !important;
+  }
+
+  .progress-bar,
+  .streak-progress .progress-bar {
+    background: $hc-primary !important;
+  }
+
+  // ============================================
+  // ESTADÍSTICAS Y NÚMEROS
+  // ============================================
+
+  .stat-number,
+  .streak-number,
+  .trending-rank {
+    color: $hc-primary !important;
+    font-weight: bold !important;
+    font-size: 1.2em !important;
+  }
+
+  .stat-label,
+  .streak-label {
+    color: $hc-text !important;
+    font-weight: 600 !important;
+  }
+
+  // ============================================
+  // TABS Y NAVEGACIÓN
+  // ============================================
+
+  .nav-tabs,
+  .nav-pills {
+    border-color: $hc-secondary !important;
+
+    .nav-link.active {
+      background: $hc-primary !important;
+      color: $hc-bg !important;
+      border-color: $hc-primary !important;
+    }
+  }
+
+  // ============================================
+  // FORMULARIOS ESPECIALES
+  // ============================================
+
+  // Checkboxes y switches
+  .form-check-input {
+    width: 2.5em !important;
+    height: 2.5em !important;
+    border: $hc-border-width solid $hc-secondary !important;
+    background: #111 !important;
+
+    &:checked {
+      background: $hc-primary !important;
+      border-color: $hc-primary !important;
+    }
+
+    &:focus {
+      box-shadow: 0 0 10px $hc-primary !important;
+    }
+  }
+
+  // Labels
+  .form-check-label,
+  .form-label,
+  label {
+    color: $hc-text !important;
+    font-weight: bold !important;
+    font-size: 1.1em !important;
+  }
+
+  // ============================================
+  // COMPONENTES ESPECIALES
+  // ============================================
+
+  // Selector de emociones
+  .emotion-btn,
+  .emotion-chip {
+    background: #111 !important;
+    border: $hc-border-width-thin solid $hc-secondary !important;
+    font-size: 1.5em !important;
+
+    &:hover,
+    &.active {
+      background: $hc-primary !important;
+      border-color: $hc-primary !important;
+    }
+  }
+
+  // Logo container
+  .logo-container {
+    background: $hc-primary !important;
+    border: $hc-border-width-thin solid $hc-primary !important;
+
+    i, img {
+      color: $hc-bg !important;
+      filter: none !important;
+    }
+  }
+
+  // Dividers
+  hr,
+  .stat-divider,
+  .divider {
+    border-color: $hc-border !important;
+    opacity: 1 !important;
+  }
+
+  // Botón de cerrar
+  .btn-close {
+    background: $hc-secondary !important;
+    opacity: 1 !important;
+    border: $hc-border-width-thin solid $hc-secondary !important;
+  }
+
+  // ============================================
+  // DISCOVER PAGE (Posts flotantes)
+  // ============================================
+
+  .ocean-container {
+    background: $hc-bg !important;
+  }
+
+  .floating-post {
+    background: #111 !important;
+    border: $hc-border-width solid $hc-border !important;
+    box-shadow: 0 0 20px $hc-border !important;
+  }
+
+  .like-btn {
+    background: #111 !important;
+    border: $hc-border-width-thin solid $hc-secondary !important;
+    color: $hc-secondary !important;
+
+    &:hover,
+    &.liked {
+      background: $hc-primary !important;
+      color: $hc-bg !important;
+      border-color: $hc-primary !important;
+    }
+  }
+
+  // Eliminar elementos decorativos
+  .betta-fish,
+  .bubble,
+  .water-waves {
+    display: none !important;
+  }
+
+  // ============================================
+  // MODAL
+  // ============================================
+
+  .modal-content {
+    background: $hc-bg !important;
+    border: $hc-border-width solid $hc-border !important;
+
+    .modal-header {
+      border-bottom: $hc-border-width-thin solid $hc-border !important;
+    }
+
+    .modal-footer {
+      border-top: $hc-border-width-thin solid $hc-border !important;
+    }
+  }
+
+  .modal-backdrop {
+    background: $hc-bg !important;
+    opacity: 0.8 !important;
+  }
+
+  // ============================================
+  // ACCESIBILIDAD - FOCUS
+  // ============================================
+
+  *:focus,
+  *:focus-visible {
+    outline: $hc-focus-width solid $hc-secondary !important;
+    outline-offset: 2px !important;
+  }
+
+  // ============================================
+  // EFECTOS HOVER REDUCIDOS
+  // ============================================
+
+  .glass-card:hover,
+  .post-card:hover {
+    box-shadow: 0 0 20px $hc-border !important;
+    transform: none !important;
+  }
+
+  // ============================================
+  // NOTIFICACIONES
+  // ============================================
+
+  .alert {
+    background: #111 !important;
+    border: $hc-border-width-thin solid $hc-border !important;
+    color: $hc-text !important;
+
+    &.alert-info {
+      border-color: $hc-primary !important;
+    }
+
+    &.alert-warning {
+      border-color: $hc-secondary !important;
+    }
+  }
+
+  // ============================================
+  // LISTA DE AMIGOS
+  // ============================================
+
+  .friend-card,
+  .suggestion-item {
+    background: #111 !important;
+    border: $hc-border-width-thin solid $hc-border !important;
+  }
+
+  // ============================================
+  // CHALLENGE CARDS
+  // ============================================
+
+  .challenge {
+    background: linear-gradient(135deg, #111 0%, #222 100%) !important;
+    border: $hc-border-width solid $hc-primary !important;
+    box-shadow: 0 0 20px $hc-primary !important;
+    animation: none !important;
+
+    &::before {
+      display: none !important;
+    }
+  }
+
+  .challenge-reward {
+    background: rgba($hc-primary, 0.2) !important;
+    border: $hc-border-width-thin solid $hc-primary !important;
+  }
+
+  // ============================================
+  // CARDS DE EMOCIONES
+  // ============================================
+
+  .emotion-happy-post,
+  .emotion-inspired-post,
+  .emotion-sad-post,
+  .emotion-love-post,
+  .emotion-angry-post,
+  .emotion-excited-post {
+    background: #111 !important;
+    border: $hc-border-width solid $hc-border !important;
+  }
+}
+
+// ============================================
+// ANIMACIONES PARA MENSAJES DE ACCESIBILIDAD
+// ============================================
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// ============================================
+// RESPONSIVE - Ajustes adicionales
+// ============================================
+
+@media (max-width: 768px) {
+  body.high-contrast {
+    font-size: 115% !important;
+
+    .post-action {
+      min-width: calc(50% - 0.25rem);
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  body.high-contrast {
+    font-size: 120% !important;
+
+    .floating-post {
+      min-width: 180px;
+      max-width: 220px;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+ body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #e7f0ff, #f9f5ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-card {
+      backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .logo-container img {
+      width: 80px;
+      height: auto;
+    }
+    .brand-text {
+      font-weight: 600;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .form-control {
+      background: rgba(255,255,255,0.8);
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+    }
+    .form-control:focus {
+      box-shadow: 0 0 10px rgba(108,92,231,0.5);
+      outline: none;
+    }
+    .btn-aura {
+      background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      color: white;
+      width: 100%;
+    }
+    .btn-aura:hover { opacity: 0.9; transform: scale(1.02); }
+    .text-muted a { color: #6c5ce7; text-decoration: none; }
+    .text-muted a:hover { text-decoration: underline; }
